@@ -1,6 +1,7 @@
 package com.panneer.springlearn.scheduler;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.annotation.Async;
@@ -16,6 +17,7 @@ import java.time.format.DateTimeFormatter;
 @Slf4j
 @Component("SchedulerJob")
 @EnableScheduling
+@ConditionalOnProperty(name = "scheduler.enabled", matchIfMissing = true)
 //@EnableAsync
 public class SchedulerJob {
 
