@@ -13,7 +13,7 @@ public class ShellConfiguration {
 
     @Bean
     ShellCommandClient shellCommandClient(){
-        var client = WebClient.builder().baseUrl("https://icanhazdadjoke.com/api").defaultHeader("Accept","application/json").build();
+        var client = WebClient.builder().baseUrl("https://icanhazdadjoke.com").defaultHeader("Accept","application/json").build();
         var factory = HttpServiceProxyFactory.builderFor(WebClientAdapter.create(client)).build();
         return factory.createClient(ShellCommandClient.class);
     }
