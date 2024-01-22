@@ -4,8 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.TaskScheduler;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
@@ -21,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 //@EnableAsync
 public class SchedulerJob {
 
-    @Scheduled(initialDelay = 5000,fixedDelay = 1000)
+    @Scheduled(initialDelay = 5000, fixedDelay = 1000)
     void runSchedulerJobOne() throws InterruptedException {
         var current = LocalDateTime.now();
         var dateTimeFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -29,7 +27,7 @@ public class SchedulerJob {
         Thread.sleep(5000);
     }
 
-    @Scheduled(initialDelay = 5000,fixedRate = 1000)
+    @Scheduled(initialDelay = 5000, fixedRate = 1000)
     void runSchedulerJobTwo() throws InterruptedException {
         var current = LocalDateTime.now();
         var dateTimeFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -37,8 +35,8 @@ public class SchedulerJob {
         Thread.sleep(5000);
     }
 
-//    @Async
-    @Scheduled(initialDelay = 5000,fixedRate = 1000)
+    //    @Async
+    @Scheduled(initialDelay = 5000, fixedRate = 1000)
     void runSchedulerJobThree() throws InterruptedException {
         var current = LocalDateTime.now();
         var dateTimeFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -56,7 +54,7 @@ public class SchedulerJob {
     }
 
     @Bean
-    public TaskScheduler taskScheduler(){
+    public TaskScheduler taskScheduler() {
         var threadPookTaskScheduler = new ThreadPoolTaskScheduler();
         threadPookTaskScheduler.setThreadNamePrefix("sample-thread");
         threadPookTaskScheduler.setPoolSize(20);
